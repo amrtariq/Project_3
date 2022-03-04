@@ -1,10 +1,80 @@
 # Where Am I Udacity Robotics ND
 
-![WhereAmI (2)](https://user-images.githubusercontent.com/18179768/156847907-927e40e9-b26c-4f88-a869-1e1a283132c2.gif)
+## Before Localization
+
+![image](https://github.com/amrtariq/Project_3/blob/main/WhereAmI/src/my_robot/screenshots/1-%20init.png)
+
+## After Localization
+
+![image](https://github.com/amrtariq/Project_3/blob/main/WhereAmI/src/my_robot/screenshots/2-%20localized.png)
+
 
 - Build Two Wheeled robot
 - Use the Adaptive Monte Carlo Localization to localize Robot.
-- 
+
+## Structure
+
+```
+    .Where AM I            # Where Am I Project
+|ــ   
+├ٌٍWhereAmI
+├─ src
+├── my_robot                               # my_robot package        
+│   │   ├── config                         # config folder for configuration files   
+│   │   │   ├── base_local_planner_params.yaml
+│   │   │   ├── costmap_common_params.yaml
+│   │   │   ├── global_costmap_params.yaml
+│   │   │   ├── local_costmap_params.yaml
+│   │   ├── launch                         # launch folder for launch files   
+│   │   │   ├── amcl.launch
+│   │   │   ├── robot_description.launch
+│   │   │   ├── world.launch
+│   │   ├── maps                           	   # maps folder for maps
+│   │   │   ├── map.pgm
+│   │   │   ├── map.yaml
+│   │   ├── meshes                           # meshes folder for sensors
+│   │   │   ├── hokuyo.dae
+│   │   ├── Models                           # models folder for models files
+│   │   │   ├── white_ball
+│   │   │   │   ├── model.config
+│   │   │   │   ├── model.sdf
+│   │   │   ├── project2_building
+│   │   │   │   ├── model.config
+│   │   │   │   ├── model.sdf	              
+│   │   ├── urdf                             # urdf folder for xarco files
+│   │   │   ├── my_robot.gazebo
+│   │   │   ├── my_robot.xacro
+│   │   ├── worlds                         # world folder for world files
+│   │   │   ├── empty.world
+│   │   │   ├── myworld.world
+│   │   │   ├── office.world	
+│   │   ├── CMakeLists.txt                 # compiler instructions
+│   │   ├── package.xml                    # package info
+│   ├── pgm_map_creator                    # pgm_map_creator        
+│   │   ├── launch                         # launch folder for launch files   
+│   │   │   ├── request_publisher.launch
+│   │   ├── maps                           # maps folder for generated maps
+│   │   │   ├── mymap.pgm
+│   │   │   ├── mymap.yaml
+│   │   ├── msgs                           # msgs folder for communication files
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── collision_map_request.proto
+│   │   ├── src                            # src folder for main function
+│   │   │   ├── collision_map_creator.cc
+│   │   │   ├── request_publisher.cc
+│   │   ├── world                          # world folder for world file
+│   │   │   ├── udacity_mtv
+│   │   ├── CMakeLists.txt                 # compiler instructions
+│   │   ├── LICENSE                        # License for repository
+│   │   ├── README.md                      # README for documentation
+│   │   ├── package.xml                    # package info
+│   ├── teleop_twist_keyboard              # teleop_twist_keyboard
+│   │   ├── CHANGELOG.rst                  # change log
+│   │   ├── CMakeLists.txt                 # compiler instructions
+│   │   ├── README.md                      # README for documentation
+│   │   ├── package.xml                    # package info
+│   │   ├── teleop_twist_keyboard.py       # keyboard controller
+```
 ## Clone and Build
 
 Step 1: Install Following Packages
@@ -53,14 +123,19 @@ You have two options to control your robot while it localize itself here:
 Navigate your robot, observe its performance and tune your parameters for AMCL.
 
 ### Option 1: Send 2D Navigation Goal
+
 Your first option would be sending a 2D Nav Goal from RViz.
 The move_base will try to navigate your robot based on the localization. Based on the new observation and the odometry, the robot to further perform the localization.
 - Click the 2D Nav Goal button in the toolbar, then click and drag on the map to send the goal to the robot. 
 - It will start moving and localize itself in the process. If you would like to give amcl node a nudge, you could give the robot an initial position estimate on the map using 2D Pose Estimate.
-### Option 2: Use teleop Node
+
+### Option 2: Use Teleop Node
+
 You could also use teleop node to control your robot and observe it localize itself in the environment.
 Open another terminal and launch the teleop script:
 ```
 $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 You could control your robot by keyboard commands now.
+
+![WhereAmI (2)](https://user-images.githubusercontent.com/18179768/156847907-927e40e9-b26c-4f88-a869-1e1a283132c2.gif)
