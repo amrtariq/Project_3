@@ -138,4 +138,4 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 You could control your robot by keyboard commands now.
 
-![WhereAmI (2)](https://user-images.githubusercontent.com/18179768/156847907-927e40e9-b26c-4f88-a869-1e1a283132c2.gif)
+![WhereAmI](https://user-images.githubusercontent.com/18179768/156850586-b26128b0-fa51-4de3-b899-6253c7e3e52b.gif)
